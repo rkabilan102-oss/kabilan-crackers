@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>kabilan Crackers – Light Up Your Celebration</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<!-- ─── SPARKS CANVAS ─── -->
+<canvas id="sparks-canvas"></canvas>
+
+<!-- ─── FLOATING WHATSAPP BUTTON ─── -->
+<a href="https://wa.me/919999999999?text=Hello!%20I%20want%20to%20order%20crackers."
+   class="float-wa" target="_blank" title="Order on WhatsApp">
+  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="white">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+  </svg>
+</a>
+
+<!-- ─── ORDER MODAL ─── -->
+<div class="modal-overlay" id="orderModal">
+  <div class="modal">
+    <h2>🎉 Place Your Order</h2>
+    <p>Fill in details & we'll send it directly to our WhatsApp!</p>
+    <input type="text"  id="custName"  placeholder="Your Name" />
+    <input type="text"  id="custPhone" placeholder="Your Phone Number" />
+    <textarea id="custOrder" placeholder="Items you want to order (e.g. 10 Box Bijili, 5 Sky Shot...)"></textarea>
+    <button class="btn-wa" onclick="sendWhatsApp()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="white">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+      </svg>
+      Send Order on WhatsApp
+    </button>
+    <button class="close-btn" onclick="closeModal()">✕ Cancel</button>
+  </div>
+</div>
+
+<!-- ─── NAVBAR ─── -->
+<nav>
+  <div class="logo">⭐ kabilan<span>Crackers</span></div>
+  <ul>
+    <li><a href="#categories">Categories</a></li>
+    <li><a href="#products">Products</a></li>
+    <li><a href="#offers">Offers</a></li>
+    <li><a href="#how">How to Order</a></li>
+    <li>
+      <a class="nav-order-btn" href="#" onclick="openModal(event)">
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="white">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+        </svg>
+        Order Now
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section class="hero">
+  <div class="hero-badge">✨ Diwali Special 2026 – Best Prices Guaranteed</div>
+  <h1>Light Up Your<br><span class="fire">Celebration!</span></h1>
+  <p>Premium quality crackers at unbeatable prices. Order from home and get delivery at your doorstep. Safe. Colorful. Joyful.</p>
+  <div class="hero-btns">
+    <a href="#products" class="btn-primary">🎆 Shop Now</a>
+    <a href="#" class="btn-wa" onclick="openModal(event)">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="white">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+      </svg>
+      Order on WhatsApp
+    </a>
+  </div>
+</section>
+
+<!-- ─── MARQUEE ─── -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    🎆 Free Delivery above ₹2000 &nbsp;|&nbsp; 🎇 Bulk Orders Welcome &nbsp;|&nbsp; 🧨 10% Off on First Order &nbsp;|&nbsp; ✅ Safe &amp; Licensed Products &nbsp;|&nbsp; 🎆 Free Delivery above ₹2000 &nbsp;|&nbsp; 🎇 Bulk Orders Welcome &nbsp;|&nbsp; 🧨 10% Off on First Order &nbsp;|&nbsp; ✅ Safe &amp; Licensed Products &nbsp;|&nbsp; 🎆 Free Delivery above ₹2000 &nbsp;|&nbsp; 🎇 Bulk Orders Welcome &nbsp;|&nbsp; 🧨 10% Off on First Order &nbsp;|&nbsp; ✅ Safe &amp; Licensed Products &nbsp;|&nbsp;
+  </div>
+</div>
+
+<!-- ─── CATEGORIES ─── -->
+<section id="categories">
+  <div class="section-title">
+    <h2>Shop by Category</h2>
+    <p>Find the perfect crackers for every moment</p>
+  </div>
+  <div class="categories-grid">
+    <div class="cat-card" onclick="filterProducts('ground')">
+      <div class="cat-icon">🧨</div>
+      <h3>Ground Crackers</h3>
+      <p>Bijili, Atom Bomb &amp; more</p>
+    </div>
+    <div class="cat-card" onclick="filterProducts('sky')">
+      <div class="cat-icon">🚀</div>
+      <h3>Sky Shots</h3>
+      <p>Rockets &amp; aerial fireworks</p>
+    </div>
+    <div class="cat-card" onclick="filterProducts('sparkler')">
+      <div class="cat-icon">✨</div>
+      <h3>Sparklers</h3>
+      <p>Kids-safe &amp; colourful</p>
+    </div>
+    <div class="cat-card" onclick="filterProducts('fancy')">
+      <div class="cat-icon">🎇</div>
+      <h3>Fancy Items</h3>
+      <p>Flower pots, Wheels &amp; more</p>
+    </div>
+    <div class="cat-card" onclick="filterProducts('gift')">
+      <div class="cat-icon">🎁</div>
+      <h3>Gift Boxes</h3>
+      <p>Curated combo packs</p>
+    </div>
+    <div class="cat-card" onclick="filterProducts('all')">
+      <div class="cat-icon">🎆</div>
+      <h3>All Products</h3>
+      <p>Browse everything</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PRODUCTS ─── -->
+<section id="products">
+  <div class="section-title">
+    <h2>Our Products</h2>
+    <p>Premium crackers at factory-direct prices</p>
+  </div>
+  <div class="filter-bar">
+    <button class="filter-btn active" onclick="filterProducts('all', this)">All</button>
+    <button class="filter-btn" onclick="filterProducts('ground', this)">Ground</button>
+    <button class="filter-btn" onclick="filterProducts('sky', this)">Sky Shots</button>
+    <button class="filter-btn" onclick="filterProducts('sparkler', this)">Sparklers</button>
+    <button class="filter-btn" onclick="filterProducts('fancy', this)">Fancy</button>
+    <button class="filter-btn" onclick="filterProducts('gift', this)">Gift Boxes</button>
+  </div>
+  <div class="products-grid" id="productsGrid"></div>
+</section>
+
+<!-- ─── OFFERS ─── -->
+<section id="offers">
+  <div class="offers-section">
+    <h2>🔥 Exclusive Offers</h2>
+    <p>Limited-time deals – Order now before they're gone!</p>
+    <div class="offers-grid">
+      <div class="offer-tag">🎉 10% Off on First Order</div>
+      <div class="offer-tag">📦 Free Delivery above ₹2000</div>
+      <div class="offer-tag">🧨 Buy 3 Get 1 Free</div>
+      <div class="offer-tag">💰 Bulk Discount 15% off 5kg+</div>
+      <div class="offer-tag">🎁 Free Gift Box on ₹5000 Orders</div>
+    </div>
+    <button class="btn-wa" onclick="openModal(event)" style="display:inline-flex;margin:0 auto;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="white">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+      </svg>
+      Claim Offer on WhatsApp
+    </button>
+  </div>
+</section>
+
+<!-- ─── HOW IT WORKS ─── -->
+<section id="how">
+  <div class="section-title">
+    <h2>How to Order</h2>
+    <p>Simple 3-step process to get crackers at your door</p>
+  </div>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h3>Browse &amp; Pick</h3>
+      <p>Choose your favourite crackers from our wide collection above.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h3>Click Order</h3>
+      <p>Hit the "Order on WhatsApp" button and fill your details.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h3>Get Delivery</h3>
+      <p>We confirm your order and deliver safely to your address.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <span class="logo">⭐ kabilanCrackers</span>
+  <p>📞 +91 99999 99999 &nbsp;|&nbsp; ✉️ kabilancrackers@email.com</p>
+  <p>📍 avanathankottai, pattukottai road, pudukkottai, Tamil Nadu – 614 624</p>
+  <div class="footer-links">
+    <a href="#">Home</a>
+    <a href="#products">Products</a>
+    <a href="#offers">Offers</a>
+    <a href="#how">How to Order</a>
+    <a href="https://wa.me/919999999999" target="_blank">WhatsApp</a>
+  </div>
+  <p class="copy">© 2026 kabilanCrackers. All rights reserved. | Licensed &amp; Certified Seller</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
